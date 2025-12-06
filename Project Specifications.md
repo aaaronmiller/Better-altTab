@@ -1,4 +1,4 @@
-HAMMERSPOON ALT-TAB SCRIPT: VELOCITY-VECTOR PROTOCOL v25.8 TITANIUM
+HAMMERSPOON ALT-TAB SCRIPT: VELOCITY-VECTOR PROTOCOL v25.9.3 TITANIUM
 The Authoritative Project Bible
 
 1. NATURAL LANGUAGE PROJECT CREATION STORY
@@ -28,7 +28,7 @@ The Velocity Insight (2024-11-22) While debugging my Hammerspoon script, I notic
 
 Then the memory anchor emerged. I needed Slack accessible without breaking my A↔B flow. Cmd+Option+` was born: one tap to jump, second tap to revert and re-anchor. It felt like pinning a window to my consciousness.
 
-The Titanium Evolution (2025-11-29) We hit a wall at v25.7. Under "Chaos" load (200 tabs, 24-day uptime), the synchronous window enumeration caused a 300ms lag on the first press. It felt "sticky." We architected v25.8 Titanium: A passive shadow watcher that maintains the window list in the background (O(1) access) combined with a robust "Sanity Check" to correct drift. We also fixed the "Blind Tapping" issue with reused canvases and fallback placeholders. The result is Seamless.
+The Titanium Evolution (2025-11-29) We hit a wall at v25.7. Under "Chaos" load (200 tabs, 24-day uptime), the synchronous window enumeration caused a 300ms lag on the first press. It felt "sticky." We architected v25.8 Titanium: A passive shadow watcher that maintains the window list in the background (O(1) access) combined with a robust "Sanity Check" to correct drift. We also fixed the "Blind Tapping" issue with reused canvases and fallback placeholders. In v25.9.3, we added Coroutine Caching and Space Watchers to eliminate the final micro-stutters. The result is Seamless.
 
 Design Philosophy
 
@@ -77,6 +77,7 @@ v23.x: Fixed isOnScreen nil errors.
 v24.x: Introduced Velocity Logic.
 v25.7: "Glass Fix" (Overlay Deletion before Focus).
 v25.8 Titanium: Passive Shadow Watcher for O(1) latency under heavy load.
+v25.9.3 Platinum: Coroutine Cache Warm-up, Space Watcher, and Reverse Browse.
 4. AUTHORITATIVE SPECIFICATIONS
 A. Pre-Velocity Specification (v23.5)
 Designation: "The Windows Emulator" Goal: Exact replication of Windows Alt+Tab behavior on macOS, resolving the "40s Lag" via Hybrid Bootstrap.
@@ -90,7 +91,7 @@ Navigation:
 Toggle: Cmd+` once = Previous Window.
 Cycle: Hold Cmd, tap ` = Walk the stack.
 Release: Reshuffles stack (Selected -> Index 1).
-B. Velocity-Vector Specification (v25.8 Titanium)
+B. Velocity-Vector Specification (v25.9.3 Platinum)
 Designation: "The Seamless Gearshift" Goal: Multi-dimensional navigation governed by Time (Velocity) and Direction, with O(1) latency.
 
 The Titanium Core (Eventtap Edition):
@@ -108,6 +109,11 @@ Memory Anchor:
 `Cmd+Opt+``: Set/Jump/Revert.
 Workspace Cycling:
 `Cmd+Ctrl+``: Cycle Spaces.
+New in v25.9.3:
+Space Watcher: Auto-detects native space changes.
+Coroutine Cache: Non-blocking background rebuilds.
+Reverse Browse: `Cmd+Shift+`` cycles backwards.
+Escape Cancel: `Esc` closes UI without switching.
 5. USAGE QUICKSTART
 Installation
 Install Hammerspoon.
@@ -120,7 +126,9 @@ Hotkeys
 Cmd + `: Bounce (Fast) / Browse (Slow).
 Cmd + Shift + `: Reverse Browse.
 Cmd + Option + `: Memory Anchor.
+Cmd + Shift + `: Reverse Browse.
 Cmd + Ctrl + `: Cycle Workspace.
+Escape: Cancel Session.
 Troubleshooting
 "Big X" Icon: Missing Screen Recording permission.
 "Sticky" Feel: Check Console for [Titanium] UI Slow logs.
